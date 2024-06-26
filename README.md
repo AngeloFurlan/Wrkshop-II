@@ -20,4 +20,13 @@ with smtplib.SMTP(smtp_server, smtp_port) as server:
   # Enviar o email
   server.sendmail(sender_email, receiver_email, message.encode('utf-8'))
 
+try:
+  git.checkout('Wokshop')
+except git.exc.GitError as e:
+  print(f"Erro ao fazer checkout da tag 'Wokshop': {e}")
+  # Cria um arquivo chamado "error_log.txt" com a mensagem de erro
+  with open("error_log.txt", "w") as f:
+    f.write(f"Erro: {e}")
+
+
 Esse arquivo faz parte do repositório utilizado no workshop da faculdade Moveedu
